@@ -58,42 +58,9 @@ const ApiService = {
     return axios(data)
   },
 
-  mount401Interceptor () {
-    if (process.env.NODE_ENV === 'development') {
-      this._reqInterceptor = axios.interceptors.request.use(config => {
-        console.log('Request Interceptor', config)
-        return config
-      }, error => {
-        return Promise.reject(error)
-      })
-    }
-
-    this._401interceptor = axios.interceptors.response.use(
-      (response) => {
-        console.log('Response Interceptor', response)
-        return response
-      },
-      error => {
-        if (error.response && error.response.status === 401) {
-          throw error
-        }
-
-        throw error
-      }
-    )
-  },
-
-  unmount401Interceptor () {
-    // Eject the interceptor
-    axios.interceptors.response.eject(this._401interceptor)
-    axios.interceptors.response.eject(this._reqInterceptor)
-  },
-
   handlingError (error) {
-    console.log(error.request)
     if (error.request.status > 0) {
-      const response = JSON.parse(error.request.response)
-      throw new ErrorService('warning', response.status, response.message)
+      throw new ErrorService('warning', error.request.status, 'Ops... something wrong!')
     } else {
       throw new ErrorService('error', error.status, error.message)
     }

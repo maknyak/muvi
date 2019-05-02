@@ -8,7 +8,7 @@ import ApiService from './services/api.service';
 import './assets/scss/main.scss';
 
 // SOLVED: setup hot loader 
-ApiService.init('https://swapi.co/api');
+ApiService.init(process.env.REACT_APP_BASE_API_URL);
 const rootElement = document.getElementById('root');
 
 let render = () => {

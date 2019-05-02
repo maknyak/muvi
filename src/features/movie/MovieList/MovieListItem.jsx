@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Col } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import './MovieListItem.scss';
 
 
@@ -9,7 +10,7 @@ class MovieListItem extends Component {
     const imgMovie = '/assets/images/' + movie.title.toLowerCase().replace(/\s/g,'') + '.jpg';
     return ( 
       <Col xs="6" sm="6" md="4" lg="3" className="px-2">
-        <a className="moviebox" href="#1">
+        <div className="moviebox" href="#1">
           <img src={imgMovie} alt="abc" className="moviebox-img" />
           <div className="moviebox-shadow">
             <div className="moviebox-meta">
@@ -18,11 +19,11 @@ class MovieListItem extends Component {
             </div>
             <div className="moviebox-hover">
               <div className="moviebox-hover-meta">
-                <button className="btn btn-outline-light">Preview</button>
+                <Link to={`/movie/${movie.episode_id}`} className="btn btn-outline-light">Preview</Link>
               </div>
             </div>
           </div>
-        </a>
+        </div>
       </Col>
     )
   }

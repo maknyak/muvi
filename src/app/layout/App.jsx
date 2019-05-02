@@ -14,7 +14,7 @@ class App extends Component {
           <NavBar/>
           <Container>
             <Route exact path="/" component={MovieList} />
-            <Route path="/detail" component={MovieDetail} />
+            <Route path="/movie/:id" component={MovieDetail} />
             <FooterNav/>
           </Container>
         </div>
