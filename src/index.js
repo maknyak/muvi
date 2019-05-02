@@ -1,19 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './app/layout/App';
 import * as serviceWorker from './serviceWorker';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter } from 'react-router-dom';
+import ApiService from './services/api.service';
+import './assets/scss/main.scss';
 
 // SOLVED: setup hot loader 
+ApiService.init('https://swapi.co/api');
 const rootElement = document.getElementById('root');
 
 let render = () => {
-  ReactDOM.render(<App/>, rootElement);
+  ReactDOM.render(
+    <BrowserRouter>
+      <App/>
+    </BrowserRouter>,
+  rootElement);
 }
 
 if (module.hot) {
-  module.hot.accept('./App', () => {
+  module.hot.accept('./app/layout/App', () => {
     setTimeout(render);
   })
 }

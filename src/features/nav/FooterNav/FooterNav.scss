@@ -1,0 +1,26 @@
+.footernav {
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  padding-bottom: 70px;
+
+  &::before {
+    background-color: #333;
+    content: '';
+    display: block;
+    height: 1px;
+    margin: 15px 0;
+    width: 100%;
+  }
+  .footernav-menu {
+    float: left;
+  }
+
+  .footernav-credit {
+    float: right;
+    font-size: 0.75rem;
+    > b {
+      color: #fff;
+      font-weight: bolder;
+    }
+  }
+}
