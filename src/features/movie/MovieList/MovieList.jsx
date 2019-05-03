@@ -3,22 +3,25 @@ import { Row, Col } from 'reactstrap';
 import MovieListItem from './MovieListItem';
 import MovieService from '../../../services/movie.service';
 import { ErrorService } from '../../../services/api.service';
-
+import { swall } from '../../../commons/helper';
+import LoadingOverlay from 'react-loading-overlay';
 
 class MovieList extends Component {
   state = {
-    movies: []
+    movies: [],
+    isLoading: true
   }
 
   async getMovies() {
     try {
       const res = await MovieService.get();
       this.setState({
-        movies: res
+        movies: res,
+        isLoading: false
       });
     } catch(e) {
       if (e instanceof ErrorService) {
-        alert(e.errorCode, e.message, e.errorType)
+        swall(e.errorType, e.message)
       }
     }
   }
@@ -28,7 +31,7 @@ class MovieList extends Component {
   }
 
   render() {
-    const { movies } = this.state;
+    const { movies, isLoading } = this.state;
     return (  
       <div className="py-5">
         <Row>
@@ -42,6 +45,7 @@ class MovieList extends Component {
               })}
             </Row>
           </Col>
+          <LoadingOverlay active={isLoading} spinner text='Memuat halaman...'></LoadingOverlay>
         </Row>
       </div>
     )

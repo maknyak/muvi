@@ -59,10 +59,11 @@ const ApiService = {
   },
 
   handlingError (error) {
+    console.log(error.message)
     if (error.request.status > 0) {
-      throw new ErrorService('warning', error.request.status, 'Ops... something wrong!')
+      throw new ErrorService('warning', error.request.status, error.message)
     } else {
-      throw new ErrorService('error', error.status, error.message)
+      throw new ErrorService('error', error.request.status, error.message)
     }
   }
 }

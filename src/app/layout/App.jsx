@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import NavBar from '../../features/nav/NavBar/NavBar';
 import MovieList from '../../features/movie/MovieList/MovieList';
-import MovieDetail from '../../features/movieDetail/MovieDetail';
+import MovieDetail from '../../features/movie/MovieDetail/MovieDetail';
 import FooterNav from '../../features/nav/FooterNav/FooterNav';
 import { Container } from 'reactstrap';
 
@@ -12,7 +12,7 @@ class App extends Component {
       <div>
         <div className="App">
           <NavBar/>
-          <Container>
+          <Container className="mt-5">
             <Route exact path="/" component={MovieList} />
             <Route path="/movie/:id" component={MovieDetail} />
             <FooterNav/>

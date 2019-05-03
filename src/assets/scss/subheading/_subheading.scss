@@ -20,3 +20,15 @@
     width: 100%;
   }
 }
+
+._loading_overlay_wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  
+  ._loading_overlay_overlay {
+    background-color: #000;
+  }
+}

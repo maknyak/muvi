@@ -8,6 +8,8 @@ class MovieListItem extends Component {
   render() {
     const { movie } = this.props;
     const imgMovie = '/assets/images/' + movie.title.toLowerCase().replace(/\s/g,'') + '.jpg';
+    const segmentUri = movie.url.split('/');
+   
     return ( 
       <Col xs="6" sm="6" md="4" lg="3" className="px-2">
         <div className="moviebox" href="#1">
@@ -19,7 +21,7 @@ class MovieListItem extends Component {
             </div>
             <div className="moviebox-hover">
               <div className="moviebox-hover-meta">
-                <Link to={`/movie/${movie.episode_id}`} className="btn btn-outline-light">Preview</Link>
+                <Link to={`/movie/${segmentUri[5]}`} className="btn btn-outline-light">Preview</Link>
               </div>
             </div>
           </div>
