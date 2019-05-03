@@ -11,6 +11,7 @@ import {
   Form,
   InputGroup,
   Input,
+  NavbarToggler,
   Button
 } from 'reactstrap';
 
@@ -72,9 +73,7 @@ class NavBar extends Component {
       <Navbar color="dark" dark expand="sm" fixed="top">
         <Container>
           <NavbarBrand href="/"><b>M</b>uvi</NavbarBrand>
-          <button className="btn" onClick={this.toggle}>
-            <i className="fa fa-search fa-fw"></i>
-          </button>
+          <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <Form onSubmit={this.searchSubmit}>
